@@ -1,81 +1,80 @@
-# 신용공여 심사 시스템 v10 (단일파일)
+# 신용공여 심사 시스템 v10
 
-GitHub에 올려서 배포·공유하기 위한 최소 구성입니다. **HTML 한 파일**에 고객 병합 데이터, 담보 위험도, DART 번들, 협의금리 이력 CSV가 포함되어 있습니다.
-
-## 포함 파일
-
-| 파일 | 설명 |
-|------|------|
-| `신용공여_심사_시스템_v10_단일파일.html` | 실행·데이터 통합본 (브라우저로 열기) |
-
-## 사용 방법
-
-1. 위 HTML 파일을 더블클릭하거나 브라우저로 드래그해 엽니다.
-2. **Chart.js**와 **Google Fonts**는 CDN을 사용합니다. 첫 실행 시 인터넷 연결이 필요할 수 있습니다.
-3. 사용 중 저장되는 내용(브라우저 localStorage 등)은 **이 HTML 파일 안에 자동으로 들어가지 않습니다.** 백업이 필요하면 앱의 보내기 기능을 사용하세요.
-
-## GitHub 업로드
-
-### 방법 0: 웹만으로 올리기 (Git 설치 없음)
-
-1. 브라우저에서 [https://github.com](https://github.com) 로그인.
-2. 오른쪽 위 **+** → **New repository** → 저장소 이름 입력 → **Create repository**.
-3. 새 저장소 페이지가 열리면 **uploading an existing file** 링크를 누르거나, 상단 **Add file** → **Upload files**.
-4. 탐색기에서 이 폴더(`creditsys-v10-github`)를 연 뒤, 아래 **세 파일을 같이** 끌어다 놓기(또는 **choose your files**로 선택):
-   - `신용공여_심사_시스템_v10_단일파일.html`
-   - `README.md`
-   - `.gitignore`
-5. 아래 **Commit changes**를 눌러 저장.
-
-**용량:** 한 파일당 약 **25MB 이하**만 웹 업로드가 됩니다. 이 HTML(~4MB)은 문제 없는 크기입니다. 그보다 크면 Git LFS나 Desktop·`git`을 써야 합니다.
-
-**이름이 깨져 보이면:** 업로드 후 GitHub에서 파일명이 이상하면, 웹에서 해당 파일을 연 뒤 **이름 변경(연필 아이콘)**으로 다시 저장해 보세요.
+브라우저에서 동작하는 **신용공여·한도 심사 보조 웹앱**입니다. 설치 없이 HTML을 열면 실행되며, 이 저장소의 **단일파일 빌드**에는 심사에 쓰는 주요 **정적 데이터**(고객 병합 DB, 담보 기반 위험도, DART 공시 번들, 협의금리 이력 CSV 등)가 **한 파일 안에 포함**되어 있습니다.
 
 ---
 
-**PC에 Git이 없으면** 아래 **방법 1** 명령은 동작하지 않습니다. 웹만 쓰려면 위 **방법 0**으로 충분합니다.
+## 무엇을 할 수 있나요?
 
-### 사전 확인 (PowerShell)
+- **고객·한도·심사 흐름**을 한 화면에서 정리해 보고, 입력값에 따른 판단 보조·검증을 받습니다.
+- **담보(주식 담보 등)와 연계된 위험도** 정보를 반영한 구조를 포함합니다.
+- **DART(전자공시)** 기반 지표·이력 요약을 종목 단위로 조회하는 흐름이 들어 있습니다.
+- **협의금리** 화면에서는 과거 적용 이력(CSV 기반)을 불러와 참고 범위·표시를 돕습니다.
+- **고객 DB 가져오기·보내기**, 심사·설정 관련 **CSV/JSON보내기** 등으로 다른 도구와 연계할 수 있습니다.
+- **단축키**(예: Alt+1~8, Alt+S 저장 등)와 **초안 자동 저장** 등 반복 작업을 줄이는 기능이 있습니다.
 
-```powershell
-git --version
-```
+자세한 메뉴명·버튼 레이블은 앱 화면을 기준으로 하시면 됩니다.
 
-- **오류·인식 안 됨** → [Git for Windows](https://git-scm.com/download/win) 설치 후, 터미널을 **완전히 닫았다가** 다시 연 다음 같은 폴더에서 진행하세요.
-- **버전이 출력됨** → 아래 **방법 1** 사용 가능.
+---
 
-### 방법 1: 명령줄 (Git 설치 후)
+## 실행 방법
 
-1. GitHub 웹 → **New repository** → 저장소 이름만 정하고 **README 추가는 하지 않은 빈 저장소**로 만듭니다.
-2. PowerShell에서 **이 폴더의 전체 경로**로 이동합니다. (예시, 본인 PC 경로에 맞게 수정)
+1. `신용공여_심사_시스템_v10_단일파일.html`을 더블클릭하거나 브라우저 창으로 끌어다 놓아 엽니다.
+2. **인터넷 연결:** 차트(**Chart.js**)와 글꼴(**Google Fonts**)은 CDN에서 불러옵니다. 처음·업데이트 후에는 네트워크가 필요할 수 있습니다.
+3. **로그인:** 화면에 안내된 대로 진행합니다. (데모·내부용 구성일 수 있습니다.)
 
-```powershell
-cd "c:\Users\ahik2\Downloads\ai\새 폴더 (5)\바탕화면\creditsys-v10-github"
-git init
-git add .
-git commit -m "Add credit screening system v10 single-file bundle"
-git branch -M main
-git remote add origin https://github.com/<사용자명>/<저장소명>.git
-git push -u origin main
-```
+---
 
-3. `<사용자명>`·`<저장소명>`을 본인 GitHub 계정·방금 만든 저장소 이름으로 바꿉니다.
-4. `git push`에서 로그인을 요구하면 GitHub는 비밀번호 대신 **Personal Access Token**을 씁니다. ([토큰 만들기 안내](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
+## 데이터가 어디에 저장되나요?
 
-**참고:** GitHub가 빈 저장소 안내에 `…git remote add origin…`을 이미 보여준 경우, `git remote add`를 두 번 하면 오류가 납니다. 그때는 `git remote remove origin` 후 다시 추가하거나, 이미 있다면 `git remote add` 줄은 건너뜁니다.
+| 구분 | 설명 |
+|------|------|
+| **이 HTML 안에 들어 있는 것** | 단일파일을 만들 당시 넣어 둔 고객·위험도·DART 번들·협의금리 이력 CSV 등 **배포 스냅샷** |
+| **브라우저에만 쌓이는 것** | 작업 중 바뀐 값, localStorage에 남는 초안·일부 설정 등 — **파일을 복사한다고 같이 옮겨지지 않습니다** |
+| **백업·이관** | 앱에서 제공하는 **보내기(JSON/CSV 등)**로 따로 저장해 두는 것이 안전합니다 |
 
-### 방법 2: GitHub Desktop (명령줄 없이)
+단일파일은 **“그 시점 데이터가 박힌 실행 패키지”**로 이해하시면 됩니다. 최신 병합 데이터로 다시 만들었다면 HTML을 교체해 배포하세요.
 
-1. [GitHub Desktop](https://desktop.github.com/) 설치 후 실행합니다.
-2. **File → Add local repository**가 아니라, 처음이면 **File → New repository**로 이 폴더(`creditsys-v10-github`)를 지정하거나, **기존 폴더를 저장소로 추가**한 뒤 커밋합니다.
-3. 상단 **Publish repository**로 GitHub에 올립니다. (웹에서 빈 저장소를 미리 만들었으면 **Repository → Repository settings → Remote**에서 URL을 맞춰도 됩니다.)
+---
 
-큰 파일(수십 MB 이상)은 웹 업로드 제한이 있을 수 있어, 그때는 **GitHub Desktop**이나 **방법 1**을 쓰는 편이 낫습니다.
+## 이 저장소에 있는 파일
 
-## 데이터 갱신
+| 파일 | 역할 |
+|------|------|
+| `신용공여_심사_시스템_v10_단일파일.html` | 본 앱 + 내장 데이터 |
+| `index.html` | GitHub Pages에서 **사이트 루트 URL**로 들어올 때 본 HTML로 연결 |
+| `README.md` | 이 문서 |
+| `.gitignore` | Git 사용 시 불필요한 로컬 파일 제외 |
 
-단일파일은 **생성 시점**의 데이터 스냅샷입니다. 병합 스크립트로 `.js` / `.csv`를 다시 만든 뒤 단일파일을 재생성했다면, 이 폴더의 HTML을 교체하고 다시 커밋하세요.
+---
+
+## 알려진 제약
+
+- **file://** 로만 열 때는 브라우저 보안 때문에 일부 기능(원격 CSV `fetch` 등)이 제한될 수 있습니다. 단일파일은 금리 이력 등을 **내장**해 두었으므로 일반적인 로컬 실행은 가능하도록 맞춰져 있습니다.
+- **민감 정보:** 샘플·내부 데이터가 포함될 수 있으니 **공개 저장소**에 올리기 전에 반드시 비식별·권한 범위를 확인하세요.
+
+---
+
+## 배포·GitHub (참고)
+
+### 링크로 “앱처럼” 열리게 하려면
+
+저장소의 `blob`·`Raw` 링크만으로는 GitHub가 HTML을 일반 사이트처럼 실행하지 않습니다. **GitHub Pages**를 켜면 `https://<아이디>.github.io/<저장소>/` 형태로 접속할 수 있습니다.
+
+1. 저장소 **Settings** → **Pages**  
+2. **Deploy from a branch** → 브랜치 `main`(또는 `master`) / 폴더 **`/` (root)** 저장  
+3. 안내된 **Pages URL**로 접속 — 루트에서는 `index.html`이 본문 HTML로 넘깁니다.
+
+### 저장소에 파일만 올릴 때 (웹 업로드)
+
+**Add file** → **Upload files**로 이 폴더의 HTML·`index.html`·README·`.gitignore`를 함께 올리면 됩니다. (파일당 약 25MB 이하 권장.)
+
+### Git CLI / GitHub Desktop
+
+PC에 Git이 설치되어 있으면 로컬에서 `git init` 후 `remote`를 붙여 푸시할 수 있습니다. 설치가 없으면 [Git for Windows](https://git-scm.com/download/win) 또는 [GitHub Desktop](https://desktop.github.com/)을 사용하세요.
+
+---
 
 ## 라이선스
 
-이 저장소에 올리는 코드·데이터의 라이선스는 조직 정책에 맞게 별도로 명시하세요.
+조직 정책에 맞게 이 프로젝트·데이터의 라이선스와 공개 범위를 별도로 정하세요.

@@ -22,7 +22,7 @@ git init
 git add .
 git commit -m "Add credit screening system v10 single-file bundle"
 git branch -M main
-git remote add origin https://github.com/<사용자명>/<저장소명>.git
+git remote add origin https://github.com/<conomono1>/<CreditSys>.git
 git push -u origin main
 ```
 
